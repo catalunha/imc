@@ -18,6 +18,10 @@ class ImcChangeNotifierController extends ChangeNotifier {
 
 class ImcChangeNotifierPage extends StatefulWidget {
   const ImcChangeNotifierPage({super.key});
+  static Route<void> route() {
+    return MaterialPageRoute<void>(
+        builder: (_) => const ImcChangeNotifierPage());
+  }
 
   @override
   State<ImcChangeNotifierPage> createState() => _ImcChangeNotifierPageState();
@@ -42,7 +46,7 @@ class _ImcChangeNotifierPageState extends State<ImcChangeNotifierPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IMC para InfoEng - ChangeNotifier'),
+        title: const Text('IMC - ChangeNotifier'),
       ),
       body: SingleChildScrollView(
         child: Form(

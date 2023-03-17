@@ -14,7 +14,8 @@ class ImcState {
 }
 
 class ImcStreamController {
-  final _imcState = StreamController<ImcState>()..add(ImcState(imc: 0));
+  final _imcState = StreamController<ImcState>.broadcast()
+    ..add(ImcState(imc: 0));
   Stream<ImcState> get imcOut => _imcState.stream;
   void close() {
     _imcState.close();
@@ -57,7 +58,7 @@ class _ImcStreamPageState extends State<ImcStreamPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IMC para InfoEng - ChangeNotifier'),
+        title: const Text('IMC - Stream'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -69,25 +70,22 @@ class _ImcStreamPageState extends State<ImcStreamPage> {
                 StreamBuilder<ImcState>(
                   stream: imcController.imcOut,
                   builder: (context, snapshot) {
+                    return ImcGauge(
+                      imc: snapshot.data?.imc ?? 0,
+                    );
+                  },
+                ),
+                StreamBuilder<ImcState>(
+                  stream: imcController.imcOut,
+                  builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      return ImcGauge(
-                        imc: snapshot.data?.imc ?? 0,
-                      );
+                      return Text(
+                          'IMC = ${formatter.format(snapshot.data?.imc ?? 0)}');
                     }
                     return Container();
                   },
                 ),
-                // StreamBuilder<ImcState>(
-                //   stream: imcController.imcOut,
-                //   builder: (context, snapshot) {
-                //     if (snapshot.hasData) {
-                //       return Text(
-                //           'IMC = ${formatter.format(snapshot.data?.imc ?? 0)}');
-                //     }
-                //     return Container();
-                //   },
-                // ),
-                const SizedBox(height: 20),
+                // const SizedBox(height: 20),
                 TextFormField(
                   controller: pesoTEC,
                   keyboardType: TextInputType.number,

@@ -4,16 +4,14 @@ import 'package:intl/intl.dart';
 
 import 'imc_gauge.dart';
 
-class ImcSetState extends StatefulWidget {
-  const ImcSetState({super.key, required this.title});
-
-  final String title;
+class ImcSetStatePage extends StatefulWidget {
+  const ImcSetStatePage({super.key});
 
   @override
-  State<ImcSetState> createState() => _ImcSetStateState();
+  State<ImcSetStatePage> createState() => _ImcSetStatePageState();
 }
 
-class _ImcSetStateState extends State<ImcSetState> {
+class _ImcSetStatePageState extends State<ImcSetStatePage> {
   final formKey = GlobalKey<FormState>();
   final pesoTEC = TextEditingController();
   final alturaTEC = TextEditingController();
@@ -41,7 +39,7 @@ class _ImcSetStateState extends State<ImcSetState> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IMC para InfoEng - set state'),
+        title: const Text('IMC - set state'),
       ),
       body: SingleChildScrollView(
         child: Form(

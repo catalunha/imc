@@ -4,16 +4,14 @@ import 'package:intl/intl.dart';
 
 import 'imc_gauge.dart';
 
-class ImcValueNotifier extends StatefulWidget {
-  const ImcValueNotifier({super.key, required this.title});
-
-  final String title;
+class ImcValueNotifierPage extends StatefulWidget {
+  const ImcValueNotifierPage({super.key});
 
   @override
-  State<ImcValueNotifier> createState() => _ImcValueNotifierState();
+  State<ImcValueNotifierPage> createState() => _ImcValueNotifierPageState();
 }
 
-class _ImcValueNotifierState extends State<ImcValueNotifier> {
+class _ImcValueNotifierPageState extends State<ImcValueNotifierPage> {
   final formKey = GlobalKey<FormState>();
   final pesoTEC = TextEditingController();
   final alturaTEC = TextEditingController();
@@ -38,7 +36,7 @@ class _ImcValueNotifierState extends State<ImcValueNotifier> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IMC para InfoEng - ValueNotifier'),
+        title: const Text('IMC - ValueNotifier'),
       ),
       body: SingleChildScrollView(
         child: Form(
