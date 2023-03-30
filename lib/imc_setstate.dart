@@ -15,7 +15,7 @@ class _ImcSetStatePageState extends State<ImcSetStatePage> {
   final formKey = GlobalKey<FormState>();
   final pesoTEC = TextEditingController();
   final alturaTEC = TextEditingController();
-  double imc = 35;
+  double imc = 0;
   var formatter =
       NumberFormat.simpleCurrency(locale: 'pt_BR', decimalDigits: 2);
   void _calcularImc({required double peso, required double altura}) async {
